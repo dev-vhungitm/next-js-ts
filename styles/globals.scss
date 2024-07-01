@@ -1,0 +1,36 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  outline: unset;
+  font-family: $fontFamily;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: unset;
+  background: unset;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: $grayColor2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $grayColor3;
+}
+
+@import './button.scss';
+@import './container.scss';

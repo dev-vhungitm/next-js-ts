@@ -1,9 +1,7 @@
-'use client';
-
 import { ComingSoon } from '@/components';
 
-const HomePage = () => {
+const ServicesPage = () => {
   return <ComingSoon />;
 };
 
-export default HomePage;
+export default ServicesPage;

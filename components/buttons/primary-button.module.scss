@@ -1,0 +1,37 @@
+.main {
+  height: 40px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 10px 16px;
+  border-radius: 4px;
+  border: 2px solid $primaryColor2;
+  font-weight: 700;
+  color: $primaryColor;
+  transition: all 0.2s ease;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 0;
+    background: $primaryColor;
+    border-radius: 1.8px;
+    content: '';
+    transition: all 0.2s ease;
+  }
+
+  &:hover {
+    border-color: $primaryColor;
+    color: white;
+
+    &::before {
+      width: 100%;
+    }
+  }
+}
