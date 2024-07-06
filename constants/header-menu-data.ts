@@ -1,10 +1,5 @@
+import { HeaderMenu } from '@/models';
 import { pathnames } from './pathnames';
-
-export interface HeaderMenu {
-  title: string;
-  url: string;
-  subMenus?: HeaderMenu[];
-}
 
 export const headerMenuData: HeaderMenu[] = [
   {
@@ -14,7 +9,7 @@ export const headerMenuData: HeaderMenu[] = [
   {
     title: pathnames.services.name,
     url: pathnames.services.pathname,
-    subMenus: [
+    children: [
       {
         title: pathnames.services.softwareTesting.name,
         url: pathnames.services.softwareTesting.pathname

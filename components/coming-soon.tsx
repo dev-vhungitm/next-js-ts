@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import styles from './index.module.scss';
-import { PrimaryButton } from '../buttons';
-import Link from 'next/link';
 import { pathnames } from '@/constants';
+import Image from 'next/image';
+import Link from 'next/link';
+import { PrimaryButton } from './buttons';
+import styles from './coming-soon.module.scss';
 
 export const ComingSoon = () => {
   const title = 'Coming Soon';

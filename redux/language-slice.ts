@@ -1,8 +1,10 @@
+'use client';
+
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
 export type Language = 'vi' | 'en';
-const initialState: Language = 'en' as Language;
+const initialState: Language = ((typeof window != 'undefined' && localStorage.getItem('language')) || 'vi') as Language;
 
 const languageSlice = createSlice({
   name: 'language',

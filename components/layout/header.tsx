@@ -1,13 +1,14 @@
 'use client';
 
-import { IHeaderMenu, headerMenuData, pathnames, useWindowDimensions } from '@/constants';
+import { headerMenuData, pathnames } from '@/constants';
+import { useWindowDimensions } from '@/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { PrimaryButton } from '../buttons';
 import Logo from '../logo';
 import styles from './header.module.scss';
-import { PrimaryButton } from '../buttons';
-import { selectLanguage, useAppSelector } from '@/redux';
+import { HeaderMenu } from '@/models';
 
 export const Header = () => {
   const contactUsTitle = 'Contact Us';
@@ -32,10 +33,10 @@ export const Header = () => {
   let headerClassName = styles.main;
   if (isShowMenusContainer) headerClassName += ' ' + styles.is_show_menu;
 
-  const checkIsActiveMenu = (menu: IHeaderMenu) => {
+  const checkIsActiveMenu = (menu: HeaderMenu) => {
     return menu.url === '/'
       ? pathname === menu.url
-      : pathname.startsWith(menu.url) || menu.subMenus?.find(subMenu => pathname.startsWith(subMenu.url)) != null;
+      : pathname.startsWith(menu.url) || menu.children?.find(subMenu => pathname.startsWith(subMenu.url)) != null;
   };
 
   // Handle show and close sub menus container
@@ -123,10 +124,10 @@ export const Header = () => {
     </Link>
   );
 
-  const buildSubMenus = (menu: IHeaderMenu) => (
+  const buildSubMenus = (menu: HeaderMenu) => (
     <div className={styles.sub_menus_container}>
       <div className={styles.sub_menus}>
-        {menu.subMenus?.map(subMenu => {
+        {menu.children?.map(subMenu => {
           const subMenuURL = subMenu.url;
           const isActiveSubMenu = checkIsActiveMenu(subMenu);
 
@@ -153,7 +154,7 @@ export const Header = () => {
       {/* Header menu */}
       <div className={styles.menus}>
         {headerMenuData.map(menu => {
-          const isHaveSubMenu = menu.subMenus && menu.subMenus.length > 0;
+          const isHaveSubMenu = menu.children && menu.children.length > 0;
           const isActiveMenu = checkIsActiveMenu(menu);
 
           // Menu class name

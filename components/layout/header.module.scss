@@ -199,7 +199,7 @@
         right: 0;
         z-index: 101;
         flex-direction: column;
-        justify-content: start;
+        justify-content: flex-start;
         width: 300px;
         max-width: 100%;
         height: 100%;
@@ -209,7 +209,7 @@
 
         /* Logo in menu */
         .logo {
-          justify-content: start;
+          justify-content: flex-start;
           display: flex;
           width: 100%;
           height: $headerHeight;
