@@ -2,22 +2,26 @@
 
 ## Tên thư mục, file
 
-- Chỉ sử dụng chữ thường, các từ nối với nhau bằng dấu gạch nối _"-"_.
+- Áp dụng Kebab Case (Các từ của tên nối với nhau bởi ký hiệu gạch ngang - và các từ viết in thường).
   - **Ưu điểm:** Tốt cho SEO, tên thư mục và file đồng bộ, thống nhất, dễ nhìn, dễ phân biệt, hạn chế lỗi chữ hoa và thường,...
   - **VD:**
     - **Tên thư mục:** software-testing, digital-transformation.
     - **Tên file:** software-testing.tsx, digital-transformation.tsx.
 
-## Tên biến
+## Tên biến js
 
-- Áp dụng quy tắc lạc đà (Camel Case).
-- Sử dụng danh từ.
+- Áp dụng Camel Case (Tên gồm các từ bao giờ cũng viết hoa đầu từ đó ngoại trừ ký tự đầu tiên của tên).
 - Nếu là biến kiểu boolean thì khai báo theo dạng `is<Danh từ>`.
 - **VD:** isInit, isLoading, isLoaded.
 
+## Tên biến css, scss
+
+- Áp dụng Kebab Case.
+- **VD:** `$primary-color`, `$font-family`, `$font-weight`.
+
 ## Tên function
 
-- Áp dụng quy tắc lạc đà _(Camel Case)_.
+- Áp dụng Camel Case.
 - Sử dụng động từ.
   - **VD:** handleLoading, handleUpdateAvatar
 - Nếu là các function bắt sự kiện thì nên khai báo theo dạng `on<Động từ>`.
@@ -25,13 +29,13 @@
 
 ## Tên component, interface
 
-Sử dụng danh từ và áp dụng quy tắc Pascal.
+- Áp dụng Pascal Case.
 
 - **VD:** DefaultLayout, Header, Footer.
 
 ## Tên class, id trong css, scss
 
-- Sử dụng danh từ chữ thường, các từ nối với nhau bằng dấu gạch dưới _"\_"_.
+- Áp dụng Snake Case (các từ được viết thường và chia tách với nhau bởi dấu gạch dưới \_).
 - **VD:** content_left
 - **Ưu điểm:** Class sau khi build ra html sẽ trông chuyên nghiệp, đẹp mắt và đồng bộ hơn.
   - **VD:** class tên `content_left` nằm trong file `header.module.scss` sau khi được build ra sẽ có dạng `header_content_left_abX4`.
@@ -200,7 +204,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 
 ## Các thư mục khác
 
-- Nếu có thư mục thì phải có file `index.ts` và export hết tất cả các file ts hoặc tsx trong thư mục đó vào file `index.ts`.
+- Nếu có thư mục thì phải có file `index.ts` và export hết tất cả các file `ts` hoặc `tsx` trong thư mục đó vào file `index.ts`.
 - Không sử dụng export default.
 - File `index.ts` của thư mục cấp nhỏ hơn sẽ được export vào file `index.ts` của thư mục cấp cao hơn.
 - **VD:** \
@@ -278,7 +282,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 
 ## Cấu trúc thư mục mẫu
 
-```
+```CSS
 /front-end
 ├── components/
 │   ├── common
@@ -375,7 +379,9 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 │   ├── container.scss
 │   ├── globals.scss
 │   ├── variables.scss
-│   └── variables.module.scss
+│   ├── variables.module.scss
+│   ├── functions.scss
+│   └── mixins.module.scss
 ├── redux/
 │   ├── index.ts
 │   ├── language-slice.ts
@@ -419,7 +425,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 ### Thư mục app
 
 - Nơi định nghĩa các route của website.
-- **Lưu ý:** Chỉ lưu trữ các route, page và một số file đặc biệt như `not-found` (page 404), layout (layout của route), không lưu trữ các component khác (các component khác sẽ lưu trữ trong thư mục `components` được đề cập ở phía dưới).
+- **Lưu ý:** Chỉ lưu trữ các route, page và một số file đặc biệt như `not-found` (page 404), `layout` (layout của route), không lưu trữ các component khác (các component khác sẽ lưu trữ trong thư mục `components` được đề cập ở phần sau).
 - **VD:**
   ```CSS
   app/
@@ -521,17 +527,21 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 - Nơi chứa các file style (css, scss) dùng chung trong dự án.
 - **VD:**
   ```CSS
-  styles/
-  ├── button.scss
-  ├── container.scss
-  ├── globals.scss
-  ├── variables.scss
-  └── variables.module.scss
+    styles/
+    ├── button.scss
+    ├── container.scss
+    ├── globals.scss
+    ├── variables.scss
+    ├── variables.module.scss
+    ├── functions.scss
+    └── mixins.scss
   ```
 - **Một số file style cần thiết:**
   - `globals.scss`: File style áp dụng cho toàn bộ website.
-  - `variables.scss`: File style chứa tất cả các biến style dùng chung trong toàn bộ website.
+  - `variables.scss`: File style lưu trữ tất cả các biến style dùng chung trong toàn bộ website.
   - `variables.module.scss`: File style module cho phép export các biến style trong `variables.scss` để có thể sử dụng trong file `ts` hay `tsx`.
+  - `functions.scss`: File style lưu trữ các functions scss dùng chung trong toàn bộ website.
+  - `mixins.scss`: File style lưu trữ các định nghĩa mixin dùng chung trong toàn bộ website.
 
 ### Thư mục services
 
@@ -543,7 +553,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
    ├── auth-services.ts
    └── axios-client.ts
   ```
-- **Một số file cần thiết**:
+- **Một số file quan trọng**:
   - `axios-client.ts`: File cấu hình chung khi sử dụng axios để gọi API.
 
 ### Thư mục redux:
@@ -558,7 +568,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   ├── store.ts
   └── ...
   ```
-- **Một số file cần thiết:**
+- **Một số file quan trọng:**
   - `store.ts`: File cấu hình và tạo ra **Redux store** cho ứng dụng, nơi kết hợp các **reducers**, áp dụng **middleware** và các cấu hình khác cần thiết để quản lý trạng thái toàn cục của ứng dụng.
 
 ### Thư mục constants
@@ -577,17 +587,23 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   - `path-names.ts`: File lưu trữ tất cả các đường dẫn trong toàn bộ website.
   - `strings.ts`: File lưu trữ các chuỗi dùng chung trong website.
   - `numbers.ts:` File lưu trữ các số liệu dùng chung trong website.
-  - `header-menu-data.ts:` File lưu trữ Header Menu của website.
-- **Lưu ý:** Các biến được khai báo trong file `.env` có thể khai báo vào đây để dễ dàng sử dụng hơn(Code có gợi ý và ngắn gọn hơn).
+  - `header-menu-data.ts:` File lưu trữ dữ liệu của Header Menu.
+- **Lưu ý:** Các biến được khai báo trong file `.env` có thể khai báo vào đây để dễ dàng sử dụng hơn(Code có khả năng gợi ý tốt và ngắn gọn hơn).
 
 ### Thư mục utils
 
-- Nơi chứa các hàm tiện ích (utility functions) và các mô-đun tiện ích chung, có thể được sử dụng trong toàn bộ ứng dụng.
+- Nơi chứa các hàm tiện ích **(utility functions)** và các **module** tiện ích chung, có thể được sử dụng trong toàn bộ ứng dụng.
+  ```CSS
+  utils/
+  ├── date-time-utils.ts
+  ├── string-utils.ts
+  ├── number-utils.ts
+  └── index.ts
+  ```
 - **Một số file thông dụng:**
-  - `path-names.ts`: File lưu trữ tất cả các đường dẫn trong toàn bộ website.
-  - `strings.ts`: File lưu trữ các chuỗi dùng chung trong website.
-  - `numbers.ts:` File lưu trữ các số liệu dùng chung trong website.
-  - `header-menu-data.ts:` File lưu trữ Header Menu của website.
+  - `date-time-utils.ts`: File lưu trữ tất cả các function hỗ trợ xử lý dữ liên quan đến thời gian trong ứng dụng.
+  - `strings.ts`: File lưu trữ tất cả các function hỗ trợ việc xử lý chuỗi trong website.
+  - `numbers.ts:` File lưu trữ tất cả các function hỗ trợ việc xử lý số liệu dùng chung trong website.
 
 ### Thư mục hooks
 
