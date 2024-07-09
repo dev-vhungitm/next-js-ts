@@ -122,7 +122,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 
 - **Style:**
 
-  - **Nested khi sử dụng scss:** tag, id, class style được viết theo kiểu nested tương tự như cấu trúc jsx giúp giảm sự lặp lại, dễ bảo trì và mở rộng codebase, cũng như tăng tốc độ phát triển và phong phú hóa cú pháp CSS.
+  - **Nested khi sử dụng scss:** tag, id, class style được viết theo kiểu nested tương tự như cấu trúc jsx giúp giảm sự lặp lại, dễ bảo trì và mở rộng codebase, cũng như tăng tốc độ phát triển và phong phú hóa cú pháp css.
 
   - **Sắp xếp các thuộc tính theo các nhóm chức năng:** Giúp cải thiện khả năng bảo trì và mở rộng mã nguồn, tăng tính hiệu quả và giảm thiểu lỗi trong quá trình phát triển dự án.
 
@@ -210,29 +210,38 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
     - Code ngắn gọn, dễ nhìn.
 
 # QUY TẮC EXPORT
-
-- Không sử dụng export default (ngoại từ các file `page.tsx` ở thư mục `app`).
-- Các file ts, tsx trong 1 thư mục sẽ được export vào file `index.ts` của thư mục đó.
+## Thư mục public
+- Không export file.
+## Thư mục app
+- Sử dụng export default.
+## Các thư mục khác
+- Nếu có thư mục thì phải có file `index.ts` và export hết tất cả các file ts hoặc tsx trong thư mục đó vào file `index.ts`.
+- Không sử dụng export default.
 - File `index.ts` của thư mục cấp nhỏ hơn sẽ được export vào file `index.ts` của thư mục cấp cao hơn.
 - **VD:** \
    Chúng ta có cây thư mục sau:
-
-  ```CSS
-  components/
-  ├── coming-soon.tsx
-  ├── coming-soon.module.scss
-  ├── logo.tsx
-  ├── logo.module.scss
-  ├── redux-provider.tsx
-  ├── layout/
-  │   ├── default-layout.tsx
-  │   ├── default-layout.module.scss
-  │   ├── footer.tsx
-  │   ├── footer.module.scss
-  │   ├── header.tsx
-  │   ├── header.module.scss
-  │   └── index.ts
-  └── index.ts
+   ```CSS
+    common
+    ├── buttons/
+    │   ├── primary-button.tsx
+    │   ├── primary-button.module.scss
+    │   └── index.ts
+    ├── layout/
+    │   ├── default-layout.tsx
+    │   ├── default-layout.module.scss
+    │   ├── footer.tsx
+    │   ├── footer.module.scss
+    │   ├── header.tsx
+    │   ├── header.module.scss
+    │   └── index.ts
+    ├── coming-soon.tsx
+    ├── coming-soon.module.scss
+    ├── logo.tsx
+    ├── logo.module.scss
+    ├── not-found.tsx
+    ├── not-found.module.scss
+    ├── redux-provider.tsx
+    └── index.ts
   ```
 
   Nội dung file `index.ts` trong thư mục `layout` sẽ là:
@@ -247,10 +256,11 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 
   ```JS
     export * from './buttons';
-    export * from './coming-soon';
     export * from './layout';
-    export * from './logo';
+    export * from './coming-soon';
     export * from './redux-provider';
+    export * from './not-found';
+    export * from './logo';
   ```
 
 # QUY TẮC COMMENT
@@ -284,65 +294,99 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
     ```
 
 # CẤU TRÚC THƯ MỤC VÀ FILES
-
-- Sử dụng **nested folders** vì nó có nhều ưu điểm:
-
-  - **Tổ chức rõ ràng:** Giúp tổ chức các thành phần của dự án một cách có hệ thống và dễ quản lý.
-  - **Dễ mở rộng và bảo trì:** Cho phép dễ dàng thêm mới và chỉnh sửa các thành phần mà không gây rối loạn.
-  - **Tránh xung đột tên file:** Phòng tránh xung đột tên file khi có nhiều file cùng tên trong dự án.
-  - **Phân tách các chức năng:** Tách biệt các chức năng và module để phát triển một cách dễ dàng hơn.
-  - **Quản lý dự án hiệu quả:** Giúp quản lý dự án hiệu quả hơn, đặc biệt khi có nhiều thành viên làm việc cùng một dự án.
-  - **Đảm bảo tính cấu trúc hợp lý:** Bảo đảm tính cấu trúc logic và dễ hiểu của dự án, đặc biệt với dự án có quy mô lớn và phức tạp.
-
-- Không dùng file `index` để viết component hoặc logic. Thay vào đó, chỉ sử dụng `index.ts` để export các file khác trong thư mục.
-
-  - **Ưu điểm:** Giữ cho mã nguồn dự án có tổ chức, dễ quản lý và mở rộng. Nó cũng làm tăng tính tái sử dụng và hỗ trợ tính module hóa trong phát triển phần mềm.
-
-- Các file css và scss được sử dụng bởi component nào thì sẽ được đặt cùng tên và nằm cùng thư mục với component đó:
-  - **Ưu điểm:** Dễ dàng, nhanh chóng kiểm tra, bảo trì, sửa lỗi, cập nhật và di dời.
-  - **VD:** File component `header.tsx`, sử dụng các style từ file `header.module.scss`:
-    ```CSS
-    ├── header.tsx
-    ├── header.module.scss
-    ```
-- Trong thư mục `app`, những component được dùng bởi page nào thì sẽ được đặt trong thư mục `components` ngang hàng với file `page.tsx` của page đó
-  - **VD:**
-
 ## Cấu trúc thư mục mẫu
 
 ```
 /front-end
 ├── components/
-│   ├── coming-soon.tsx
-│   ├── coming-soon.module.scss
-│   ├── logo.tsx
-│   ├── logo.module.scss
-│   ├── redux-provider.tsx
-│   ├── layout/
-│   │   ├── default-layout.tsx
-│   │   ├── default-layout.module.scss
-│   │   ├── footer.tsx
-│   │   ├── footer.module.scss
-│   │   ├── header.tsx
-|   |   ├── header.module.scss
+│   ├── common
+│   │   ├── buttons/
+│   │   │   ├── primary-button.tsx
+│   │   │   ├── primary-button.module.scss
+│   │   │   └── index.ts
+│   │   ├── layout/
+│   │   │   ├── default-layout.tsx
+│   │   │   ├── default-layout.module.scss
+│   │   │   ├── footer.tsx
+│   │   │   ├── footer.module.scss
+│   │   │   ├── header.tsx
+│   │   │   ├── header.module.scss
+│   │   │   └── index.ts
+│   │   ├── coming-soon.tsx
+│   │   ├── coming-soon.module.scss
+│   │   ├── logo.tsx
+│   │   ├── logo.module.scss
+│   │   ├── not-found.tsx
+│   │   ├── not-found.module.scss
+│   │   ├── redux-provider.tsx
+│   │   └── index.ts
+│   ├── home
+│   │   ├── home-banner.tsx
+│   │   ├── home-banner.module.tsx
+│   │   ├── home-content.tsx
+│   │   ├── home-content.module.tsx
+│   │   ├── home-footer.tsx
+│   │   ├── home-footer.module.tsx
+│   │   ├── home.tsx
+│   │   ├── home.module.tsx
+│   │   └── index.ts
+│   ├── contact-us
+│   │   ├── contact-us-banner.tsx
+│   │   ├── contact-us-banner.module.tsx
+│   │   ├── contact-us-content.tsx
+│   │   ├── contact-us-content.module.tsx
+│   │   ├── contact-us-footer.tsx
+│   │   ├── contact-us-footer.module.tsx
+│   │   ├── contact-us.tsx
+│   │   ├── contact-us.module.tsx
+│   │   └── index.ts
+│   ├── services
+│   │   ├── services-banner.tsx
+│   │   ├── services-banner.module.tsx
+│   │   ├── services-content.tsx
+│   │   ├── services-content.module.tsx
+│   │   ├── services-footer.tsx
+│   │   ├── services-footer.module.tsx
+│   │   ├── services.tsx
+│   │   ├── services.module.tsx
+│   │   └── index.ts
+│   ├── software-testing
+│   │   ├── software-testing-banner.tsx
+│   │   ├── software-testing-banner.module.tsx
+│   │   ├── software-testing-content.tsx
+│   │   ├── software-testing-content.module.tsx
+│   │   ├── software-testing-footer.tsx
+│   │   ├── software-testing-footer.module.tsx
+│   │   ├── software-testing.tsx
+│   │   ├── software-testing.module.tsx
+│   │   └── index.ts
+│   ├── digital-transformation
+│   │   ├── digital-transformation-banner.tsx
+│   │   ├── digital-transformation-banner.module.tsx
+│   │   ├── digital-transformation-content.tsx
+│   │   ├── digital-transformation-content.module.tsx
+│   │   ├── digital-transformation-footer.tsx
+│   │   ├── digital-transformation-footer.module.tsx
+│   │   ├── digital-transformation.tsx
+│   │   ├── digital-transformation.module.tsx
 │   │   └── index.ts
 │   └── index.ts
 ├── app/
+│   ├── contact-us/
+│   │   └── page.tsx
+│   ├── services/
+│   │   ├── software-testing/
+│   │   │   └── page.tsx
+│   │   └── digital-transformation/
+│   │       └── page.tsx
 │   ├── layout.tsx
-│   ├── favicon.ico
 │   ├── page.tsx
 │   ├── not-found.tsx
-│   ├── not-found.module.scss
-│   ├── contact-us/
-│   |   └── page.tsx
-│   └── services/
-│       ├── software-testing/
-│       │   └── page.tsx
-│       └── digital-transformation/
-│           └── page.tsx
+│   └── favicon.ico
+│   
 ├── services/
 │   ├── index.ts
-│   ├── auth.ts
+│   ├── auth-services.ts
 │   └── axios-client.ts
 ├── styles/
 │   ├── button.scss
@@ -353,20 +397,26 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 ├── redux/
 │   ├── index.ts
 │   ├── language-slice.ts
-│   └── store.ts
-├── utils/
-│   ├── index.ts
-│   └── use-window-dimensions.ts
+│   └── store.t
 ├── models/
 │   ├── auth.ts
 │   ├── header-menu.ts
 │   ├── index.ts
 │   └── user.ts
+├── hook/
+│   ├── index.ts
+│   └── use-window-dimensions.ts
+├── utils/
+│   ├── date-utils.ts
+│   ├── string-utils.ts
+│   ├── number-utils.ts
+│   └── index.ts
 ├── constants/
 │   ├── header-menu-data.ts
-│   ├── index.ts
 │   ├── path-names.ts
-│   └── strings.ts
+│   ├── strings.ts
+│   ├── numbers.ts
+│   └── index.ts
 ├── public/
 │   └── media/
 │       └── 404.webp
@@ -382,128 +432,185 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 ├── .gitignore
 └── README.md
 ```
-
-### Thư mục font-end
-
-Thư mục gốc của dự án, nơi chứa toàn bộ mã nguồn
-
+### Thư mục app
+- Nơi định nghĩa các route của website.
+- **Lưu ý:** Chỉ lưu trữ các route, page và một số file đặc biệt như `not-found` (page 404), layout (layout của route), không lưu trữ các component khác (các component khác sẽ lưu trữ trong thư mục `components` được đề cập ở phía dưới).
+- **VD:**
+  ```CSS
+  app/
+  ├── contact-us/
+  │   └── page.tsx
+  ├── services/
+  │   ├── software-testing/
+  │   │   └── page.tsx
+  │   └── digital-transformation/
+  │       └── page.tsx
+  ├── layout.tsx
+  ├── page.tsx
+  ├── not-found.tsx
+  └── favicon.ico
+  ```
 ### Thư mục components
-
+- Nơi chứa toàn bộ **component** dùng trong dự án. Tất cả các **component** sẽ được export vào file `index.ts`.
+- **VD:**
 ```CSS
 components/
-├── coming-soon.tsx
-├── coming-soon.module.scss
-├── logo.tsx
-├── logo.module.scss
-├── redux-provider.tsx
-├── layout/
-│   ├── default-layout.tsx
-│   ├── default-layout.module.scss
-│   ├── footer.tsx
-│   ├── footer.module.scss
-│   ├── header.tsx
-|   ├── header.module.scss
+├── common
+│   ├── buttons/
+│   │   ├── primary-button.tsx
+│   │   ├── primary-button.module.scss
+│   │   └── index.ts
+│   ├── layout/
+│   │   ├── default-layout.tsx
+│   │   ├── default-layout.module.scss
+│   │   ├── footer.tsx
+│   │   ├── footer.module.scss
+│   │   ├── header.tsx
+│   │   ├── header.module.scss
+│   │   └── index.ts
+│   ├── coming-soon.tsx
+│   ├── coming-soon.module.scss
+│   ├── logo.tsx
+│   ├── logo.module.scss
+│   ├── not-found.tsx
+│   ├── not-found.module.scss
+│   ├── redux-provider.tsx
 │   └── index.ts
-├── index.ts
-└── ...
+├── home
+│   ├── home-banner.tsx
+│   ├── home-banner.module.tsx
+│   ├── home-content.tsx
+│   ├── home-content.module.tsx
+│   ├── home-footer.tsx
+│   ├── home-footer.module.tsx
+│   ├── home.tsx
+│   ├── home.module.tsx
+│   └── index.ts
+├── contact-us
+│   ├── contact-us-banner.tsx
+│   ├── contact-us-banner.module.tsx
+│   ├── contact-us-content.tsx
+│   ├── contact-us-content.module.tsx
+│   ├── contact-us-footer.tsx
+│   ├── contact-us-footer.module.tsx
+│   ├── contact-us.tsx
+│   ├── contact-us.module.tsx
+│   └── index.ts
+├── services
+│   ├── services-banner.tsx
+│   ├── services-banner.module.tsx
+│   ├── services-content.tsx
+│   ├── services-content.module.tsx
+│   ├── services-footer.tsx
+│   ├── services-footer.module.tsx
+│   ├── services.tsx
+│   ├── services.module.tsx
+│   └── index.ts
+├── software-testing
+│   ├── software-testing-banner.tsx
+│   ├── software-testing-banner.module.tsx
+│   ├── software-testing-content.tsx
+│   ├── software-testing-content.module.tsx
+│   ├── software-testing-footer.tsx
+│   ├── software-testing-footer.module.tsx
+│   ├── software-testing.tsx
+│   ├── software-testing.module.tsx
+│   └── index.ts
+├── digital-transformation
+│   ├── digital-transformation-banner.tsx
+│   ├── digital-transformation-banner.module.tsx
+│   ├── digital-transformation-content.tsx
+│   ├── digital-transformation-content.module.tsx
+│   ├── digital-transformation-footer.tsx
+│   ├── digital-transformation-footer.module.tsx
+│   ├── digital-transformation.tsx
+│   ├── digital-transformation.module.tsx
+│   └── index.ts
+└── index.ts
 ```
-
-Nơi chứa các component dùng chung trong dự án. Tất cả các component sẽ được export vào `index.ts`
-
 ### Thư mục styles
-
-```JS
-styles/
-├── button.scss
-├── container.scss
-├── globals.scss
-├── variables.scss
-├── variables.module.scss
-└── ...
-```
-
-Nơi chứa các file css, scss dùng chung trong dự án
-
+- Nơi chứa các file style (css, scss) dùng chung trong dự án.
+- **VD:**
+  ```CSS
+  styles/
+  ├── button.scss
+  ├── container.scss
+  ├── globals.scss
+  ├── variables.scss
+  └── variables.module.scss
+  ```
 - **Một số file style cần thiết:**
   - `globals.scss`: File style áp dụng cho toàn bộ website.
   - `variables.scss`: File style chứa tất cả các biến style dùng chung trong toàn bộ website.
-  - `variables.module.scss`: File style module cho phép export các variable trong `variables.scss` có thể sử dụng trong file ts hay tsx.
+  - `variables.module.scss`: File style module cho phép export các biến style trong `variables.scss` để có thể sử dụng trong file `ts` hay `tsx`.
 
 ### Thư mục services
-
-```JS
-services/
-├── index.ts
-├── auth.ts
-├── axios-client.ts
-└── ...
-```
-
-- Nơi chứa các file services hỗ trợ việc tương tác với API.
+- Nơi chứa các file services hỗ trợ việc giao tiếp với **API**.
+- **VD:**
+  ```CSS
+  services/
+   ├── index.ts
+   ├── auth-services.ts
+   └── axios-client.ts
+  ```
 - **Một số file cần thiết**:
   - `axios-client.ts`: File cấu hình chung khi sử dụng axios để gọi API.
 
 ### Thư mục redux:
-
-```JS
+- Nơi chứa các file hỗ trợ việc sử dụng **Redux** để quản lý trạng thái toàn cục của ứng dụng.
+- Sử dụng **Redux Toolkit** giúp đơn giản hóa việc sử dụng **Redux**.
+- **VD:**
+```CSS
  redux/
  ├── index.ts
  ├── language-slice.ts
  ├── store.ts
  └── ...
 ```
-
-- Nơi chứa các file hỗ trợ để quản lý trạng thái toàn cục của ứng dụng.
-- Sử dụng **Redux Toolkit** giúp đơn giản hóa việc sử dụng redux.
 - **Một số file cần thiết:**
-  - `store.ts`: File cấu hình và tạo ra Redux store cho ứng dụng, nơi kết hợp các reducers, áp dụng middleware và các cấu hình khác cần thiết để quản lý trạng thái toàn cục của ứng dụng.
-
+  - `store.ts`: File cấu hình và tạo ra **Redux store** cho ứng dụng, nơi kết hợp các **reducers**, áp dụng **middleware** và các cấu hình khác cần thiết để quản lý trạng thái toàn cục của ứng dụng.
 ### Thư mục constants
+- Nơi chứa các file lưu trữ các biến constants của website.
+- **VD:**
+  ```CSS
+    constants/
+    ├── header-menu-data.ts
+    ├── path-names.ts
+    ├── strings.ts
+    ├── numbers.ts
+    └── index.ts
+  ```
+- **Một số file thông dụng:**
+  - `path-names.ts`: File lưu trữ tất cả các đường dẫn trong toàn bộ website.
+  - `strings.ts`: File lưu trữ các chuỗi dùng chung trong website.
+  - `numbers.ts:` File lưu trữ các số liệu dùng chung trong website.
+  - `header-menu-data.ts:` File lưu trữ Header Menu của website.
+- **Lưu ý:** Các biến được khai báo trong file `.env` có thể khai báo vào đây để dễ dàng sử dụng hơn(Code có gợi ý và ngắn gọn hơn).
 
-```JS
-constants/
-├── header-menu-data.ts
-├── index.ts
-├── path-names.ts
-├── strings.ts
-└── ...
-```
+### Thư mục utils
+- Nơi chứa các hàm tiện ích (utility functions) và các mô-đun tiện ích chung, có thể được sử dụng trong toàn bộ ứng dụng.
+- **Một số file thông dụng:**
+  - `path-names.ts`: File lưu trữ tất cả các đường dẫn trong toàn bộ website.
+  - `strings.ts`: File lưu trữ các chuỗi dùng chung trong website.
+  - `numbers.ts:` File lưu trữ các số liệu dùng chung trong website.
+  - `header-menu-data.ts:` File lưu trữ Header Menu của website.
+  ```
+### Thư mục hooks
+- Nơi chứa các **hook** tùy chỉnh có khả năng sử dụng trong toàn bộ ứng dụng.
+- **VD:**
+  ```CSS
+  hook/
+  ├── index.ts
+  └── use-window-dimensions.ts
+  ```
+### Thư mục models
+- Nơi chứa các file định nghĩa các **interface** hoặc **type** mô tả cấu trúc của dữ liệu được trao đổi hoặc lưu trữ trong ứng dụng.
+- **VD:**
+  ```CSS
+  models/
+  ├── auth.ts
+  ├── header-menu.ts
+  ├── index.ts
+  └── user.ts
+  ```
 
-- Nơi chứa các file hỗ trợ các biến constants của website.
-- **Một số file cần thiết:**
-  - `strings.ts`: File chứa các chuỗi dùng chung trong website.
-  - `number.ts:` File chứa các số liệu dùng chung trong website.
-  - `path-names.ts`: File chứa tất cả các đường dẫn trong toàn bộ website, giúp tránh sai sót và dễ dàng, nhanh chóng thay đổi mỗi khi cần.
-- Các biến được khai báo trong file `.env` nên được khai báo vào đây để dễ dàng sử dụng hơn.
-
-### Thư mục app
-
-Nơi định nghĩa các route, page, component và css, scss tương ứng với từng route.
-
-**Mỗi route sẽ có:**
-
-- Một file `page.tsx` để đại diện cho trang chính của route.
-- Một thư mục `components` để chứa tất cả component được dùng trong page
-
-```JS
-/app
-│
-├── layout.tsx             // Component layout chung
-├── favicon.ico            // Biểu tượng trang web
-├── page.tsx               // Trang chủ
-├── not-found.tsx          // Trang 404
-├── not-found.module.scss  // CSS module cho trang 404
-├── contact-us/
-│   ├── components         // Các component trong trang contact-us
-│   |   ├── contact-us-header.tsx
-│   │   ├── contact-us-content.tsx
-│   |   ├── contact-us-footer.tsx
-│   │   └── index.ts
-│   └── page.tsx           // Trang contact-us
-│
-└── services/
-    ├── software-testing/
-    │   └── page.tsx       // Trang software-testing mềm
-    └── digital-transformation/
-        └── page.tsx       // Trang digital-transformation
-```
