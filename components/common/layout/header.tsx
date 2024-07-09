@@ -1,14 +1,14 @@
 'use client';
 
 import { headerMenuData, pathnames } from '@/constants';
-import { useWindowDimensions } from '@/utils';
+import { useWindowDimensions } from '@/hooks';
+import { HeaderMenu } from '@/models';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { PrimaryButton } from '../buttons';
 import Logo from '../logo';
 import styles from './header.module.scss';
-import { HeaderMenu } from '@/models';
 
 export const Header = () => {
   const contactUsTitle = 'Contact Us';
