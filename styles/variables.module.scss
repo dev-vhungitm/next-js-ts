@@ -1,13 +1,13 @@
 :export {
-  headerHeight: $headerHeight;
-  fontFamily: $fontFamily;
+  headerHeight: $header-height;
+  fontFamily: $font-family;
 
   /* Colors */
-  primaryColor: $primaryColor;
-  primaryColor: $primaryColor2;
-  primaryColor: $primaryColor3;
+  primaryColor: $primary-color;
+  primaryColor2: $primary-color-2;
+  primaryColor3: $primary-color-3;
 
-  grayColor: $grayColor;
-  grayColor: $grayColor2;
-  grayColor: $grayColor3;
+  grayColor: $gray-color;
+  grayColor2: $gray-color-2;
+  grayColor3: $gray-color-3;
 }

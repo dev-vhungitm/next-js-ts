@@ -3,7 +3,7 @@
 ::after {
   box-sizing: border-box;
   outline: unset;
-  font-family: $fontFamily;
+  font-family: $font-family;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -25,11 +25,11 @@ img {
 
 ::-webkit-scrollbar {
   width: 10px;
-  background: $grayColor2;
+  background: $gray-color-2;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $grayColor3;
+  background: $gray-color-3;
 }
 
 @import './button.scss';

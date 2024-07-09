@@ -1,11 +1,17 @@
-$headerHeight: 60px;
-$fontFamily: 'Inter', sans-serif;
+$header-height: 60px;
+$font-family: 'Inter', sans-serif;
 
 /* Colors */
-$primaryColor: #1e96ff;
-$primaryColor2: #40a1ff;
-$primaryColor3: #f0f8ff;
+$primary-color: #1e96ff;
+$primary-color-2: #40a1ff;
+$primary-color-3: #f0f8ff;
 
-$grayColor: #303030;
-$grayColor2: #f4f4f4;
-$grayColor3: #e4e4e4;
+$gray-color: #303030;
+$gray-color-2: #f4f4f4;
+$gray-color-3: #e4e4e4;
+
+/* Breakpoint */
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
