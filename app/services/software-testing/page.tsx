@@ -1,7 +1,7 @@
-import { ComingSoon } from '@/components';
+import { SoftwareTesting } from '@/components';
 
 const SoftwareTestingPage = () => {
-  return <ComingSoon />;
+  return <SoftwareTesting />;
 };
 
 export default SoftwareTestingPage;

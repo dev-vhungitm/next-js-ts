@@ -1,9 +1,7 @@
-'use client';
-
-import { ComingSoon } from '@/components';
+import { Home } from '@/components';
 
 const HomePage = () => {
-  return <ComingSoon />;
+  return <Home />;
 };
 
 export default HomePage;

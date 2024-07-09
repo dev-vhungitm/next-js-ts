@@ -1,7 +1,7 @@
-import { ComingSoon } from '@/components';
+import { Services } from '@/components';
 
 const ServicesPage = () => {
-  return <ComingSoon />;
+  return <Services />;
 };
 
 export default ServicesPage;

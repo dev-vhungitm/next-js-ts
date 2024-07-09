@@ -1,12 +1,12 @@
 'use client';
 
+import { PrimaryButton } from '@/components';
 import { pathnames } from '@/constants';
+import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import styles from './not-found.module.scss';
-import Image from 'next/image';
-import Link from 'next/link';
-import { PrimaryButton } from '@/components';
 
 const NotFoundPage = () => {
   const pathname = usePathname();
