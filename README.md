@@ -2,7 +2,7 @@
 
 ## Tên thư mục, file
 
-- Áp dụng Kebab Case (Các từ của tên nối với nhau bởi ký hiệu gạch ngang - và các từ viết in thường).
+- Áp dụng Kebab Case (Viết thường, các từ nối với nhau bởi dấu gạch ngang _"-"_).
   - **Ưu điểm:** Tốt cho SEO, tên thư mục và file đồng bộ, thống nhất, dễ nhìn, dễ phân biệt, hạn chế lỗi chữ hoa và thường,...
   - **VD:**
     - **Tên thư mục:** software-testing, digital-transformation.
@@ -10,7 +10,7 @@
 
 ## Tên biến js
 
-- Áp dụng Camel Case (Tên gồm các từ bao giờ cũng viết hoa đầu từ đó ngoại trừ ký tự đầu tiên của tên).
+- Áp dụng Camel Case (Viết hoa chữ cái đầu tiên của mỗi từ, trừ kí tự đầu tiên của tên).
 - Nếu là biến kiểu boolean thì khai báo theo dạng `is<Danh từ>`.
 - **VD:** isInit, isLoading, isLoaded.
 
@@ -29,13 +29,13 @@
 
 ## Tên component, interface
 
-- Áp dụng Pascal Case.
+- Áp dụng Pascal Case (Viết hoa chữ cái đầu tiên của mỗi từ).
 
 - **VD:** DefaultLayout, Header, Footer.
 
 ## Tên class, id trong css, scss
 
-- Áp dụng Snake Case (các từ được viết thường và chia tách với nhau bởi dấu gạch dưới \_).
+- Áp dụng Snake Case (Các từ được viết thường và nối với nhau bởi dấu gạch dưới _"\_"_).
 - **VD:** content_left
 - **Ưu điểm:** Class sau khi build ra html sẽ trông chuyên nghiệp, đẹp mắt và đồng bộ hơn.
   - **VD:** class tên `content_left` nằm trong file `header.module.scss` sau khi được build ra sẽ có dạng `header_content_left_abX4`.
@@ -116,7 +116,7 @@
 
 - **Style:**
 
-  - **Nested khi sử dụng scss:** tag, id, class style được viết theo kiểu nested tương tự như cấu trúc jsx giúp giảm sự lặp lại, dễ bảo trì và mở rộng codebase, cũng như tăng tốc độ phát triển và phong phú hóa cú pháp css.
+  - **Nested khi sử dụng scss:** tag, id, class style được viết theo kiểu nested tương tự như cấu trúc jsx giúp giảm thiểu sự lặp lại, dễ bảo trì và mở rộng codebase, cũng như tăng tốc độ phát triển và phong phú hóa cú pháp css.
   - **Sắp xếp các thuộc tính theo các nhóm chức năng:** Giúp cải thiện khả năng bảo trì và mở rộng mã nguồn, tăng tính hiệu quả và giảm thiểu lỗi trong quá trình phát triển dự án.
 
     - **Các nhóm chức năng chính:**
@@ -188,7 +188,7 @@
           return <div>Header</div>
         }
       ```
-  - **Tạo nhanh component:** `raf` + `Enter`
+  - **Tạo nhanh component:** `raf` + `Enter` (Cài extension **ES7+ React/Redux/React-Native snippets** cho **VS Code**)
   - **Ưu điểm:**
     - Code ngắn gọn, dễ nhìn.
 
@@ -204,7 +204,7 @@
 
 ## Các thư mục khác
 
-- Nếu có thư mục thì phải có file `index.ts` và export hết tất cả các file `ts` hoặc `tsx` trong thư mục đó vào file `index.ts`.
+- Nếu có thư mục thì thư mục đó phải có file `index.ts` và export hết tất cả các file `ts` hoặc `tsx` trong thư mục đó vào file `index.ts`.
 - Không sử dụng export default.
 - File `index.ts` của thư mục cấp nhỏ hơn sẽ được export vào file `index.ts` của thư mục cấp cao hơn.
 - **VD:** \
@@ -257,7 +257,7 @@
     ```
   - **VD:**
     ```JS
-      // Fetch data
+      // Fetch header menu data
     ```
 - **Comment JSX block:**
   - **Sử dụng:**
@@ -524,7 +524,7 @@
 
 ### Thư mục styles
 
-- Nơi chứa các file style (css, scss) dùng chung trong dự án.
+- Nơi chứa các file style (CSS, SCSS) dùng chung trong dự án.
 - **VD:**
   ```CSS
     styles/
@@ -540,7 +540,7 @@
   - `globals.scss`: File style áp dụng cho toàn bộ website.
   - `variables.scss`: File style lưu trữ tất cả các biến style dùng chung trong toàn bộ website.
   - `variables.module.scss`: File style module cho phép export các biến style trong `variables.scss` để có thể sử dụng trong file `ts` hay `tsx`.
-  - `functions.scss`: File style lưu trữ các functions scss dùng chung trong toàn bộ website.
+  - `functions.scss`: File style lưu trữ các functions SCSS dùng chung trong toàn bộ website.
   - `mixins.scss`: File style lưu trữ các định nghĩa mixin dùng chung trong toàn bộ website.
 
 ### Thư mục services
@@ -592,7 +592,7 @@
 
 ### Thư mục utils
 
-- Nơi chứa các hàm tiện ích **(utility functions)** và các **module** tiện ích chung, có thể được sử dụng trong toàn bộ ứng dụng.
+- Nơi lưu trữ các hàm tiện ích **(utility functions)** và các **module** tiện ích chung sử dụng trong toàn bộ ứng dụng.
   ```CSS
   utils/
   ├── date-time-utils.ts
@@ -603,7 +603,7 @@
 - **Một số file thông dụng:**
   - `date-time-utils.ts`: File lưu trữ tất cả các function hỗ trợ xử lý dữ liên quan đến thời gian trong ứng dụng.
   - `strings.ts`: File lưu trữ tất cả các function hỗ trợ việc xử lý chuỗi trong website.
-  - `numbers.ts:` File lưu trữ tất cả các function hỗ trợ việc xử lý số liệu dùng chung trong website.
+  - `numbers.ts:` File lưu trữ tất cả các function hỗ trợ việc xử lý số liệu dùng chung.
 
 ### Thư mục hooks
 
@@ -627,3 +627,8 @@
   ├── response.ts
   └── index.ts
   ```
+
+### Thư mục public
+
+- Nơi lưu trữ các tài nguyên tĩnh như hình ảnh, font chữ, favicon, và các tệp tin khác.
+- Các thư mục trong thư mục `public` nên được chia theo các feature để dễ dàng hệ thống và tái sử dụng.
