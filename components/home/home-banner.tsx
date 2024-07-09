@@ -1,3 +1,5 @@
+import styles from './home-banner.module.scss';
+
 export const HomeBanner = () => {
-  return <div>HomeBanner</div>;
+  return <div className={styles.main}>HomeBanner</div>;
 };

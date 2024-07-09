@@ -1,3 +1,5 @@
+import styles from './software-testing-banner.module.scss';
+
 export const SoftwareTestingBanner = () => {
-  return <div>SoftwareTestingBanner</div>;
+  return <div className={styles.main}>SoftwareTestingBanner</div>;
 };

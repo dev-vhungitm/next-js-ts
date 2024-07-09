@@ -1,3 +1,5 @@
+import styles from './home-content.module.scss';
+
 export const HomeContent = () => {
-  return <div>HomeContent</div>;
+  return <div className={styles.main}>HomeContent</div>;
 };

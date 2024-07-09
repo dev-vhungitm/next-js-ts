@@ -1,3 +1,5 @@
+import styles from './services-banner.module.scss';
+
 export const ServicesBanner = () => {
-  return <div>ServicesBanner</div>;
+  return <div className={styles.main}>ServicesBanner</div>;
 };

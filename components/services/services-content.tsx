@@ -1,3 +1,5 @@
+import styles from './services-content.module.scss';
+
 export const ServicesContent = () => {
-  return <div>ServicesContent</div>;
+  return <div className={styles.main}>ServicesContent</div>;
 };
