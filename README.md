@@ -1,6 +1,7 @@
 # QUY TẮC ĐẶT TÊN
 
 ## Tên thư mục, file
+
 - Chỉ sử dụng chữ thường, các từ nối với nhau bằng dấu gạch nối _"-"_.
   - **Ưu điểm:** Tốt cho SEO, tên thư mục và file đồng bộ, thống nhất, dễ nhìn, dễ phân biệt, hạn chế lỗi chữ hoa và thường,...
   - **VD:**
@@ -8,12 +9,14 @@
     - **Tên file:** software-testing.tsx, digital-transformation.tsx.
 
 ## Tên biến
+
 - Áp dụng quy tắc lạc đà (Camel Case).
 - Sử dụng danh từ.
 - Nếu là biến kiểu boolean thì khai báo theo dạng `is<Danh từ>`.
 - **VD:** isInit, isLoading, isLoaded.
 
 ## Tên function
+
 - Áp dụng quy tắc lạc đà _(Camel Case)_.
 - Sử dụng động từ.
   - **VD:** handleLoading, handleUpdateAvatar
@@ -21,18 +24,24 @@
   - **VD:** onClickSave, onClickUpdateHistory.
 
 ## Tên component, interface
+
 Sử dụng danh từ và áp dụng quy tắc Pascal.
+
 - **VD:** DefaultLayout, Header, Footer.
 
 ## Tên class, id trong css, scss
+
 - Sử dụng danh từ chữ thường, các từ nối với nhau bằng dấu gạch dưới _"\_"_.
 - **VD:** content_left
 - **Ưu điểm:** Class sau khi build ra html sẽ trông chuyên nghiệp, đẹp mắt và đồng bộ hơn.
   - **VD:** class tên `content_left` nằm trong file `header.module.scss` sau khi được build ra sẽ có dạng `header_content_left_abX4`.
 
 # QUY TẮC FORMAT CODE
+
 - Sử dụng **Prettier** kết hợp với **ESLint** để format code.
+
   - **Prettier:**
+
     - **Sử dụng:**
       ```JS
         {
@@ -74,11 +83,13 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
       - Tuân thủ quy ước mã hóa.
       - Tích hợp với Prettier.
       - Hỗ trợ TypeScript.
+
 - **Logic:**
+
   - Tách biệt phần khai báo với các đoạn logic và các đoạn logic với mục đích khác nhau thành các khối code riêng biệt.
-  - **Ưu điểm:**
-    Mang lại nhiều lợi ích quan trọng như dễ đọc, dễ bảo trì, tính tái sử dụng cao, giảm thiểu lỗi và tăng tính cấu trúc của dự án.
+  - **Ưu điểm:** Mang lại nhiều lợi ích quan trọng như dễ đọc, dễ bảo trì, tính tái sử dụng cao, giảm thiểu lỗi và tăng tính cấu trúc của dự án.
   - **VD:**
+
     ```JS
       // BLOCK 1: Get form values
       const { username, password, isRemember } = formValues;
@@ -98,9 +109,12 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
         setLoginErrorMessage(response.message ?? defaultErrorMessage);
       }
     ```
+
 - **Style:**
+
   - **Nested khi sử dụng scss:** tag, id, class style được viết theo kiểu nested tương tự như cấu trúc jsx giúp giảm sự lặp lại, dễ bảo trì và mở rộng codebase, cũng như tăng tốc độ phát triển và phong phú hóa cú pháp css.
   - **Sắp xếp các thuộc tính theo các nhóm chức năng:** Giúp cải thiện khả năng bảo trì và mở rộng mã nguồn, tăng tính hiệu quả và giảm thiểu lỗi trong quá trình phát triển dự án.
+
     - **Các nhóm chức năng chính:**
       - Postioning.
       - Flexbox.
@@ -109,6 +123,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
       - Typography.
       - Effects, interaction and others.
     - **VD:** Ta có class **menu_item** có các thuộc tính được sắp xếp theo nhóm chức năng như sau:
+
     ```CSS
       .menu_item {
         /* Positioning */
@@ -149,7 +164,9 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
         cursor: pointer;
       }
     ```
+
 # QUY TẮC KHAI BÁO
+
 - Sử dụng `const` khi giá trị của biến không thay đổi.
 - Sử dụng `let` khi giá trị của biến có thay đổi.
 - Hạn chế sử dụng `var` do tính linh hoạt của nó không được tốt và có thể gây ra những lỗi khó xử lý trong quản lý phạm vi biến.
@@ -170,40 +187,46 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   - **Tạo nhanh component:** `raf` + `Enter`
   - **Ưu điểm:**
     - Code ngắn gọn, dễ nhìn.
+
 # QUY TẮC EXPORT
+
 ## Thư mục public
+
 - Không export file.
+
 ## Thư mục app
+
 - Sử dụng export default.
 
 ## Các thư mục khác
+
 - Nếu có thư mục thì phải có file `index.ts` và export hết tất cả các file ts hoặc tsx trong thư mục đó vào file `index.ts`.
 - Không sử dụng export default.
 - File `index.ts` của thư mục cấp nhỏ hơn sẽ được export vào file `index.ts` của thư mục cấp cao hơn.
 - **VD:** \
    Chúng ta có cây thư mục sau:
-   ```CSS
-    common
-    ├── buttons/
-    │   ├── primary-button.tsx
-    │   ├── primary-button.module.scss
-    │   └── index.ts
-    ├── layout/
-    │   ├── default-layout.tsx
-    │   ├── default-layout.module.scss
-    │   ├── footer.tsx
-    │   ├── footer.module.scss
-    │   ├── header.tsx
-    │   ├── header.module.scss
-    │   └── index.ts
-    ├── coming-soon.tsx
-    ├── coming-soon.module.scss
-    ├── logo.tsx
-    ├── logo.module.scss
-    ├── not-found.tsx
-    ├── not-found.module.scss
-    ├── redux-provider.tsx
-    └── index.ts
+  ```CSS
+   common
+   ├── buttons/
+   │   ├── primary-button.tsx
+   │   ├── primary-button.module.scss
+   │   └── index.ts
+   ├── layout/
+   │   ├── default-layout.tsx
+   │   ├── default-layout.module.scss
+   │   ├── footer.tsx
+   │   ├── footer.module.scss
+   │   ├── header.tsx
+   │   ├── header.module.scss
+   │   └── index.ts
+   ├── coming-soon.tsx
+   ├── coming-soon.module.scss
+   ├── logo.tsx
+   ├── logo.module.scss
+   ├── not-found.tsx
+   ├── not-found.module.scss
+   ├── redux-provider.tsx
+   └── index.ts
   ```
   Nội dung file `index.ts` trong thư mục `layout` sẽ là:
   ```JS
@@ -222,6 +245,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   ```
 
 # QUY TẮC COMMENT
+
 - **Comment logic, JSX props:**
   - **Sử dụng:**
     ```JS
@@ -251,144 +275,149 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
     ```
 
 # CẤU TRÚC THƯ MỤC VÀ FILES
+
 ## Cấu trúc thư mục mẫu
-  ```
-  /front-end
-  ├── components/
-  │   ├── common
-  │   │   ├── buttons/
-  │   │   │   ├── primary-button.tsx
-  │   │   │   ├── primary-button.module.scss
-  │   │   │   └── index.ts
-  │   │   ├── layout/
-  │   │   │   ├── default-layout.tsx
-  │   │   │   ├── default-layout.module.scss
-  │   │   │   ├── footer.tsx
-  │   │   │   ├── footer.module.scss
-  │   │   │   ├── header.tsx
-  │   │   │   ├── header.module.scss
-  │   │   │   └── index.ts
-  │   │   ├── coming-soon.tsx
-  │   │   ├── coming-soon.module.scss
-  │   │   ├── logo.tsx
-  │   │   ├── logo.module.scss
-  │   │   ├── not-found.tsx
-  │   │   ├── not-found.module.scss
-  │   │   ├── redux-provider.tsx
-  │   │   └── index.ts
-  │   ├── home
-  │   │   ├── home-banner.tsx
-  │   │   ├── home-banner.module.tsx
-  │   │   ├── home-content.tsx
-  │   │   ├── home-content.module.tsx
-  │   │   ├── home-footer.tsx
-  │   │   ├── home-footer.module.tsx
-  │   │   ├── home.tsx
-  │   │   ├── home.module.tsx
-  │   │   └── index.ts
-  │   ├── contact-us
-  │   │   ├── contact-us-banner.tsx
-  │   │   ├── contact-us-banner.module.tsx
-  │   │   ├── contact-us-content.tsx
-  │   │   ├── contact-us-content.module.tsx
-  │   │   ├── contact-us-footer.tsx
-  │   │   ├── contact-us-footer.module.tsx
-  │   │   ├── contact-us.tsx
-  │   │   ├── contact-us.module.tsx
-  │   │   └── index.ts
-  │   ├── services
-  │   │   ├── services-banner.tsx
-  │   │   ├── services-banner.module.tsx
-  │   │   ├── services-content.tsx
-  │   │   ├── services-content.module.tsx
-  │   │   ├── services-footer.tsx
-  │   │   ├── services-footer.module.tsx
-  │   │   ├── services.tsx
-  │   │   ├── services.module.tsx
-  │   │   └── index.ts
-  │   ├── software-testing
-  │   │   ├── software-testing-banner.tsx
-  │   │   ├── software-testing-banner.module.tsx
-  │   │   ├── software-testing-content.tsx
-  │   │   ├── software-testing-content.module.tsx
-  │   │   ├── software-testing-footer.tsx
-  │   │   ├── software-testing-footer.module.tsx
-  │   │   ├── software-testing.tsx
-  │   │   ├── software-testing.module.tsx
-  │   │   └── index.ts
-  │   ├── digital-transformation
-  │   │   ├── digital-transformation-banner.tsx
-  │   │   ├── digital-transformation-banner.module.tsx
-  │   │   ├── digital-transformation-content.tsx
-  │   │   ├── digital-transformation-content.module.tsx
-  │   │   ├── digital-transformation-footer.tsx
-  │   │   ├── digital-transformation-footer.module.tsx
-  │   │   ├── digital-transformation.tsx
-  │   │   ├── digital-transformation.module.tsx
-  │   │   └── index.ts
-  │   └── index.ts
-  ├── app/
-  │   ├── contact-us/
-  │   │   └── page.tsx
-  │   ├── services/
-  │   │   ├── software-testing/
-  │   │   │   └── page.tsx
-  │   │   └── digital-transformation/
-  │   │       └── page.tsx
-  │   ├── layout.tsx
-  │   ├── page.tsx
-  │   ├── not-found.tsx
-  │   └── favicon.ico
-  │   
-  ├── services/
-  │   ├── index.ts
-  │   ├── auth-services.ts
-  │   └── axios-client.ts
-  ├── styles/
-  │   ├── button.scss
-  │   ├── container.scss
-  │   ├── globals.scss
-  │   ├── variables.scss
-  │   └── variables.module.scss
-  ├── redux/
-  │   ├── index.ts
-  │   ├── language-slice.ts
-  │   └── store.t
-  ├── models/
-  │   ├── auth.ts
-  │   ├── header-menu.ts
-  │   ├── index.ts
-  │   └── user.ts
-  ├── hooks/
-  │   ├── index.ts
-  │   └── use-window-dimensions.ts
-  ├── utils/
-  │   ├── date-utils.ts
-  │   ├── string-utils.ts
-  │   ├── number-utils.ts
-  │   └── index.ts
-  ├── constants/
-  │   ├── header-menu-data.ts
-  │   ├── path-names.ts
-  │   ├── strings.ts
-  │   ├── numbers.ts
-  │   └── index.ts
-  ├── public/
-  │   └── media/
-  │       └── 404.webp
-  ├── .env.production
-  ├── .env.development
-  ├── next-env.d.ts
-  ├── next.config.mjs
-  ├── tsconfig.json
-  ├── package.json
-  ├── yarn.lock
-  ├── package-lock.json
-  ├── .eslintrc.json
-  ├── .gitignore
-  └── README.md
-  ```
+
+```
+/front-end
+├── components/
+│   ├── common
+│   │   ├── buttons/
+│   │   │   ├── primary-button.tsx
+│   │   │   ├── primary-button.module.scss
+│   │   │   └── index.ts
+│   │   ├── layout/
+│   │   │   ├── default-layout.tsx
+│   │   │   ├── default-layout.module.scss
+│   │   │   ├── footer.tsx
+│   │   │   ├── footer.module.scss
+│   │   │   ├── header.tsx
+│   │   │   ├── header.module.scss
+│   │   │   └── index.ts
+│   │   ├── coming-soon.tsx
+│   │   ├── coming-soon.module.scss
+│   │   ├── logo.tsx
+│   │   ├── logo.module.scss
+│   │   ├── not-found.tsx
+│   │   ├── not-found.module.scss
+│   │   ├── redux-provider.tsx
+│   │   └── index.ts
+│   ├── home
+│   │   ├── home-banner.tsx
+│   │   ├── home-banner.module.tsx
+│   │   ├── home-content.tsx
+│   │   ├── home-content.module.tsx
+│   │   ├── home-footer.tsx
+│   │   ├── home-footer.module.tsx
+│   │   ├── home.tsx
+│   │   ├── home.module.tsx
+│   │   └── index.ts
+│   ├── contact-us
+│   │   ├── contact-us-banner.tsx
+│   │   ├── contact-us-banner.module.tsx
+│   │   ├── contact-us-content.tsx
+│   │   ├── contact-us-content.module.tsx
+│   │   ├── contact-us-footer.tsx
+│   │   ├── contact-us-footer.module.tsx
+│   │   ├── contact-us.tsx
+│   │   ├── contact-us.module.tsx
+│   │   └── index.ts
+│   ├── services
+│   │   ├── services-banner.tsx
+│   │   ├── services-banner.module.tsx
+│   │   ├── services-content.tsx
+│   │   ├── services-content.module.tsx
+│   │   ├── services-footer.tsx
+│   │   ├── services-footer.module.tsx
+│   │   ├── services.tsx
+│   │   ├── services.module.tsx
+│   │   └── index.ts
+│   ├── software-testing
+│   │   ├── software-testing-banner.tsx
+│   │   ├── software-testing-banner.module.tsx
+│   │   ├── software-testing-content.tsx
+│   │   ├── software-testing-content.module.tsx
+│   │   ├── software-testing-footer.tsx
+│   │   ├── software-testing-footer.module.tsx
+│   │   ├── software-testing.tsx
+│   │   ├── software-testing.module.tsx
+│   │   └── index.ts
+│   ├── digital-transformation
+│   │   ├── digital-transformation-banner.tsx
+│   │   ├── digital-transformation-banner.module.tsx
+│   │   ├── digital-transformation-content.tsx
+│   │   ├── digital-transformation-content.module.tsx
+│   │   ├── digital-transformation-footer.tsx
+│   │   ├── digital-transformation-footer.module.tsx
+│   │   ├── digital-transformation.tsx
+│   │   ├── digital-transformation.module.tsx
+│   │   └── index.ts
+│   └── index.ts
+├── app/
+│   ├── contact-us/
+│   │   └── page.tsx
+│   ├── services/
+│   │   ├── software-testing/
+│   │   │   └── page.tsx
+│   │   └── digital-transformation/
+│   │       └── page.tsx
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── not-found.tsx
+│   └── favicon.ico
+│
+├── services/
+│   ├── index.ts
+│   ├── auth-services.ts
+│   └── axios-client.ts
+├── styles/
+│   ├── button.scss
+│   ├── container.scss
+│   ├── globals.scss
+│   ├── variables.scss
+│   └── variables.module.scss
+├── redux/
+│   ├── index.ts
+│   ├── language-slice.ts
+│   └── store.t
+├── models/
+│   ├── auth.ts
+│   ├── header-menu.ts
+│   ├── user.ts
+│   ├── response.ts
+│   └── index.ts
+├── hooks/
+│   ├── index.ts
+│   └── use-window-dimensions.ts
+├── utils/
+│   ├── date-utils.ts
+│   ├── string-utils.ts
+│   ├── number-utils.ts
+│   └── index.ts
+├── constants/
+│   ├── header-menu-data.ts
+│   ├── path-names.ts
+│   ├── strings.ts
+│   ├── numbers.ts
+│   └── index.ts
+├── public/
+│   └── media/
+│       └── 404.webp
+├── .env.production
+├── .env.development
+├── next-env.d.ts
+├── next.config.mjs
+├── tsconfig.json
+├── package.json
+├── yarn.lock
+├── package-lock.json
+├── .eslintrc.json
+├── .gitignore
+└── README.md
+```
+
 ### Thư mục app
+
 - Nơi định nghĩa các route của website.
 - **Lưu ý:** Chỉ lưu trữ các route, page và một số file đặc biệt như `not-found` (page 404), layout (layout của route), không lưu trữ các component khác (các component khác sẽ lưu trữ trong thư mục `components` được đề cập ở phía dưới).
 - **VD:**
@@ -406,7 +435,9 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   ├── not-found.tsx
   └── favicon.ico
   ```
+
 ### Thư mục components
+
 - Nơi chứa toàn bộ **component** dùng trong dự án. Tất cả các **component** sẽ được export vào file `index.ts`.
 - **VD:**
   ```CSS
@@ -484,7 +515,9 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   │   └── index.ts
   └── index.ts
   ```
+
 ### Thư mục styles
+
 - Nơi chứa các file style (css, scss) dùng chung trong dự án.
 - **VD:**
   ```CSS
@@ -501,6 +534,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   - `variables.module.scss`: File style module cho phép export các biến style trong `variables.scss` để có thể sử dụng trong file `ts` hay `tsx`.
 
 ### Thư mục services
+
 - Nơi chứa các file services hỗ trợ việc giao tiếp với **API**.
 - **VD:**
   ```CSS
@@ -513,6 +547,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   - `axios-client.ts`: File cấu hình chung khi sử dụng axios để gọi API.
 
 ### Thư mục redux:
+
 - Nơi chứa các file hỗ trợ việc sử dụng **Redux** để quản lý trạng thái toàn cục của ứng dụng.
 - Sử dụng **Redux Toolkit** giúp đơn giản hóa việc sử dụng **Redux**.
 - **VD:**
@@ -527,6 +562,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   - `store.ts`: File cấu hình và tạo ra **Redux store** cho ứng dụng, nơi kết hợp các **reducers**, áp dụng **middleware** và các cấu hình khác cần thiết để quản lý trạng thái toàn cục của ứng dụng.
 
 ### Thư mục constants
+
 - Nơi chứa các file lưu trữ các biến constants của website.
 - **VD:**
   ```CSS
@@ -545,6 +581,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
 - **Lưu ý:** Các biến được khai báo trong file `.env` có thể khai báo vào đây để dễ dàng sử dụng hơn(Code có gợi ý và ngắn gọn hơn).
 
 ### Thư mục utils
+
 - Nơi chứa các hàm tiện ích (utility functions) và các mô-đun tiện ích chung, có thể được sử dụng trong toàn bộ ứng dụng.
 - **Một số file thông dụng:**
   - `path-names.ts`: File lưu trữ tất cả các đường dẫn trong toàn bộ website.
@@ -553,6 +590,7 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   - `header-menu-data.ts:` File lưu trữ Header Menu của website.
 
 ### Thư mục hooks
+
 - Nơi chứa các **hook** tùy chỉnh có khả năng sử dụng trong toàn bộ ứng dụng.
 - **VD:**
   ```CSS
@@ -562,12 +600,14 @@ Sử dụng danh từ và áp dụng quy tắc Pascal.
   ```
 
 ### Thư mục models
+
 - Nơi chứa các file định nghĩa các **interface** hoặc **type** mô tả cấu trúc của dữ liệu được trao đổi hoặc lưu trữ trong ứng dụng.
 - **VD:**
   ```CSS
   models/
   ├── auth.ts
   ├── header-menu.ts
-  ├── index.ts
-  └── user.ts
+  ├── user.ts
+  ├── response.ts
+  └── index.ts
   ```
