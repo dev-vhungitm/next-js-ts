@@ -444,8 +444,9 @@
 
 ### Thư mục components
 
-- Nơi chứa toàn bộ **component** dùng trong dự án. Tất cả các **component** sẽ được export vào file `index.ts`.
+- Nơi chứa toàn bộ **component** được phân theo các feature trong website.
 - **VD:**
+
   ```CSS
   components/
   ├── common
@@ -521,6 +522,11 @@
   │   └── index.ts
   └── index.ts
   ```
+
+### Thư mục public
+
+- Nơi lưu trữ các tài nguyên tĩnh như hình ảnh, font chữ, favicon, và các tệp tin khác.
+- Các thư mục trong thư mục `public` nên được chia theo các feature để dễ dàng hệ thống và tái sử dụng.
 
 ### Thư mục styles
 
@@ -627,8 +633,3 @@
   ├── response.ts
   └── index.ts
   ```
-
-### Thư mục public
-
-- Nơi lưu trữ các tài nguyên tĩnh như hình ảnh, font chữ, favicon, và các tệp tin khác.
-- Các thư mục trong thư mục `public` nên được chia theo các feature để dễ dàng hệ thống và tái sử dụng.
