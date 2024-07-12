@@ -11,7 +11,6 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'scss'), path.join(__dirname, 'components')],
     prependData: `
       @import "styles/variables.scss";
-      @import "styles/variables.module.scss";
       @import "styles/mixins.scss";
       @import "styles/functions.scss";
     `
