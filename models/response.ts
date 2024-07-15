@@ -1,12 +1,12 @@
-export interface ResponseError {
+export interface IResponseError {
   FieldName: string;
   Message: string;
 }
 
-export interface Response<T> {
+export interface IResponse<T> {
   statusCode?: number;
   succeeded?: boolean;
   message?: string;
-  errors?: ResponseError[];
+  errors?: IResponseError[];
   data?: T;
 }

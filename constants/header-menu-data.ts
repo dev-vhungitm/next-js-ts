@@ -1,7 +1,7 @@
-import { HeaderMenu } from '@/models';
+import { IHeaderMenu } from '@/models';
 import { pathnames } from './pathnames';
 
-export const headerMenuData: HeaderMenu[] = [
+export const headerMenuData: IHeaderMenu[] = [
   {
     title: pathnames.home.name,
     url: pathnames.home.pathname

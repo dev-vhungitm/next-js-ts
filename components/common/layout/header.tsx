@@ -2,7 +2,7 @@
 
 import { headerMenuData, pathnames } from '@/constants';
 import { useWindowDimensions } from '@/hooks';
-import { HeaderMenu } from '@/models';
+import { IHeaderMenu } from '@/models';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -33,7 +33,7 @@ export const Header = () => {
   let headerClassName = styles.main;
   if (isShowMenusContainer) headerClassName += ' ' + styles.is_show_menu;
 
-  const checkIsActiveMenu = (menu: HeaderMenu) => {
+  const checkIsActiveMenu = (menu: IHeaderMenu) => {
     return menu.url === '/'
       ? pathname === menu.url
       : pathname.startsWith(menu.url) || menu.children?.find(subMenu => pathname.startsWith(subMenu.url)) != null;
@@ -124,7 +124,7 @@ export const Header = () => {
     </Link>
   );
 
-  const buildSubMenus = (menu: HeaderMenu) => (
+  const buildSubMenus = (menu: IHeaderMenu) => (
     <div className={styles.sub_menus_container}>
       <div className={styles.sub_menus}>
         {menu.children?.map(subMenu => {

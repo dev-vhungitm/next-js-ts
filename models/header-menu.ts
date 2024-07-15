@@ -1,5 +1,5 @@
-export interface HeaderMenu {
+export interface IHeaderMenu {
   title: string;
   url: string;
-  children?: HeaderMenu[];
+  children?: IHeaderMenu[];
 }

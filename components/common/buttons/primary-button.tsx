@@ -1,10 +1,10 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import styles from './primary-button.module.scss';
 
-export interface PrimaryButtonProps
+export interface IPrimaryButtonProps
   extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {}
 
-export const PrimaryButton = (props: PrimaryButtonProps) => {
+export const PrimaryButton = (props: IPrimaryButtonProps) => {
   let className = styles.main;
   if (props.className) className += ' ' + props.className;
 
