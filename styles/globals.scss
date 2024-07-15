@@ -8,7 +8,6 @@
 }
 
 body {
-  min-height: 100vh;
   margin: 0;
   font-size: 14px;
 }
@@ -16,20 +15,12 @@ body {
 a {
   text-decoration: unset;
   background: unset;
+  color: $primary-color;
 }
 
 img {
   max-width: 100%;
   height: auto;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  background: $gray-color-2;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $gray-color-3;
 }
 
 @import './button.scss';

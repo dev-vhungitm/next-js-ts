@@ -3,3 +3,9 @@
     @content;
   }
 }
+
+@mixin responsive-by-min-width($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}

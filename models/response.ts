@@ -3,7 +3,7 @@ export interface IResponseError {
   Message: string;
 }
 
-export interface IResponse<T> {
+export interface IResponse<T = null> {
   statusCode?: number;
   succeeded?: boolean;
   message?: string;
