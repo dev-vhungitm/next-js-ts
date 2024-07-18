@@ -1,27 +1,22 @@
-'use client';
-
 import { PrimaryButton } from '@/components';
 import { pathnames } from '@/constants';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 import styles from './not-found.module.scss';
 
 export const NotFound = () => {
-  const pathname = usePathname();
-  const router = useRouter();
   const title = 'Page Not Found';
   const message = 'The page you are looking is not found';
   const notFoundImageURL = '/media/404.webp';
   const goToHomePageTitle = 'Home Page';
+  const pathname = headers().get('pathname') ?? '';
 
   // Navigate to NotFound page
-  useEffect(() => {
-    if (!pathname.startsWith(pathnames.notFound.pathname)) {
-      router.push(pathnames.notFound.pathname + '?url=' + encodeURI(pathname));
-    }
-  }, [router, pathname]);
+  if (!pathname.startsWith(pathnames.notFound.pathname)) {
+    redirect(pathnames.notFound.pathname + '?url=' + encodeURI(pathname));
+  }
 
   return (
     <div className={styles.main}>
